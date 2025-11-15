@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TS Models — Conteúdo Adulto (18+)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ======== AGE GATE ======== -->
+  <div id="ageGate">
+    <div class="panel">
+      <h2>Você tem 18 anos ou mais?</h2>
+      <button id="enterBtn" class="btn-yes">Sim</button>
+      <button id="exitBtn" class="btn-no">Não</button>
+    </div>
+  </div>
+
+  <!-- ======== APP ======== -->
+  <div class="container" id="app" aria-hidden="true">
+
+    <header class="header">
+      <img src="ts.jpeg" class="logo" alt="Logo TS Packs" />
+
+      <div class="titleBox">
+        <h1>TS MODELS <span class="tag">(Conteúdo para maiores)</span></h1>
+        <div class="tag">Fotos de modelos, Verificadas • Divulgação</div>
+      </div>
+
+      <nav aria-label="menu" class="menu">
+        <a href="#">Início</a>
+        <a href="#about">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </header>
+
+    <!-- ======== CONTROLES ======== -->
+    <section class="controls">
+      <input class="search" id="search" placeholder="Buscar por nome, tag ou categoria" />
+      <select id="filter" aria-label="Filtrar">
+        <option value="all">Todas</option>
+        <option value="photos">Fotos</option>
+        <option value="videos">Vídeos</option>
+      </select>
+    </section>
+
+    <!-- ======== GALERIA ======== -->
+    <main>
+      <section class="grid" id="gallery">
+
+        <!-- CARD 1 COM LINK GERÁVEL POR WHATSAPP -->
+        <article class="card">
+          <a id="modelLink1" href="#" target="_blank">
+            <img src="ts.jpeg" class="thumb" alt="Modelo 1" />
+          </a>
+
+          <h3 class="name">Ana Clara</h3>
+          <p class="bio">Logo oficial TS Packs — Conteúdo adulto.</p>
+
+          <div class="tags">
+            <span class="tag">photos</span>
+            <span class="tag">logo</span>
+          </div>
+        </article>
+
+      </section>
+
+      <div id="empty" class="empty">Nenhuma modelo encontrada.</div>
+    </main>
+
+    <!-- ======== LIGHTBOX ======== -->
+    <div id="lightbox" role="dialog" aria-hidden="true">
+      <img id="lightboxImg" alt="Imagem ampliada" />
+      <div class="info" id="lightboxInfo"></div>
+    </div>
+
+    <!-- ======== FOOTER ======== -->
+    <footer>
+      <div id="about"><strong></strong></div>
+      <div style="margin-top:15px;color:var(--muted);text-align:center;">
+        © <span id="year"></span> TS PACKS MODELS
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

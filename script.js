@@ -42,11 +42,11 @@ const MODELS = [
 let texto1 = encodeURIComponent(
   "Olá, vim pela TS Models e gostaria de comprar seus conteúdos. Por favor, envie sua tabela."
 );
-MODELS[0].whatsapp = `https://wa.me/71984373174?text=${texto1}`;
+MODELS[0].whatsapp = `https://wa.me/11987059169?text=${texto1}`;
 
 // FOTO 2 → Apenas o número (pedido anterior)
 let texto2 = encodeURIComponent("Olá, vim pela TS Models.");
-MODELS[1].whatsapp = `https://wa.me/71984373174?text=${texto2}`;
+MODELS[1].whatsapp = `https://wa.me/11987059169?text=${texto2}`;
 
 // FOTO 3 continua igual
 

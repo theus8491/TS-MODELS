@@ -21,16 +21,16 @@ const MODELS = [
     whatsapp: "" // será preenchido abaixo
   },
   {
-    name: "SUA VAGA AQUI",
-    age: 22,
-    img: "ts.jpeg",
+    name: "NULL",
+    age: 21,
+    img: "null.jpeg",
     whatsapp: "" // será preenchido abaixo
   },
   {
     name: "SUA VAGA AQUI",
     age: 21,
     img: "ts.jpeg",
-    whatsapp: "#" // permanece como pediu
+    whatsapp: "#" // permanece igual
   }
 ];
 
@@ -38,15 +38,14 @@ const MODELS = [
 // WHATSAPP LINKS GERADOS
 // =======================
 
-// FOTO 1 → TEXTO 2 (formal)
-let texto1 = encodeURIComponent(
+// FOTO 1 → TEXTO FORMAL
+let textoFormal = encodeURIComponent(
   "Olá, vim pela TS Models e gostaria de comprar seus conteúdos. Por favor, envie sua tabela."
 );
-MODELS[0].whatsapp = `https://wa.me/11987059169?text=${texto1}`;
+MODELS[0].whatsapp = `https://wa.me/11987059169?text=${textoFormal}`;
 
-// FOTO 2 → Apenas o número (pedido anterior)
-let texto2 = encodeURIComponent("Olá, vim pela TS Models.");
-MODELS[1].whatsapp = `https://wa.me/11987059169?text=${texto2}`;
+// FOTO 2 → MESMO TEXTO FORMAL, número 4185014439
+MODELS[1].whatsapp = `https://wa.me/4185014439?text=${textoFormal}`;
 
 // FOTO 3 continua igual
 

@@ -1,4 +1,4 @@
-// ==== AGE GATE ====
+// ==== AGE GATE (sem alterações) ====
 const gate = document.getElementById("ageGate");
 const enter = document.getElementById("enterBtn");
 const exitBtn = document.getElementById("exitBtn");
@@ -12,44 +12,53 @@ exitBtn.onclick = () => {
   window.location = "https://google.com";
 };
 
-// ==== MODELS DATA ====
+// ---
+
+// ==== MODELS DATA (sem alterações nos dados iniciais) ====
 const MODELS = [
   {
     name: "RUBY",
     age: 34,
     img: "joy.jpeg",
-    whatsapp: "" // será preenchido abaixo
+    whatsapp: "" 
   },
   {
     name: "NULL",
     age: 21,
     img: "null.jpeg",
-    whatsapp: "" // será preenchido abaixo
+    whatsapp: "" 
   },
   {
-    name: "SUA VAGA AQUI",
-    age: 21,
-    img: "ts.jpeg",
-    whatsapp: "#" // permanece igual
+    name: "BIA",
+    age: 37,
+    img: "BIA.jpeg",
+    whatsapp: "" // Pronta para ser preenchida
   }
 ];
+
+// ---
 
 // =======================
 // WHATSAPP LINKS GERADOS
 // =======================
 
-// FOTO 1 → TEXTO FORMAL
+// O texto é definido apenas UMA vez e reutilizado
 let textoFormal = encodeURIComponent(
   "Olá, vim pela TS Models e gostaria de comprar seus conteúdos. Por favor, envie sua tabela."
 );
+
+// FOTO 1 → RUBY: 11987059169 usa o textoFormal
 MODELS[0].whatsapp = `https://wa.me/11987059169?text=${textoFormal}`;
 
-// FOTO 2 → MESMO TEXTO FORMAL, número 4185014439
+// FOTO 2 → NULL: 4185014439 usa o textoFormal
 MODELS[1].whatsapp = `https://wa.me/4185014439?text=${textoFormal}`;
 
-// FOTO 3 continua igual
+// FOTO 3 → BIA: 15996377715 usa o textoFormal
+MODELS[2].whatsapp = `https://wa.me/15996377715?text=${textoFormal}`; 
 
-// ==== GALERIA ====
+// ---
+
+// ==== GALERIA (sem alterações) ====
 const gallery = document.getElementById("gallery");
 const empty = document.getElementById("empty");
 
@@ -77,7 +86,9 @@ function loadModels(list) {
 
 loadModels(MODELS);
 
-// ==== LIGHTBOX ====
+// ---
+
+// ==== LIGHTBOX (sem alterações) ====
 const lightbox = document.getElementById("lightbox");
 const lightImg = document.getElementById("lightboxImg");
 

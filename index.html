@@ -1,90 +1,297 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TS Models — Conteúdo Adulto (18+)</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TS PACKS 2.0 </title>
+
+<style>
+body { margin: 0; font-family: Arial, sans-serif; background: #111; color: #fff; }
+:root { --card-bg: #1c1c1c; --muted: #aaa; --pink: #ff67c4; }
+
+/* AGE GATE */
+#ageGate { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:50; }
+#ageGate .panel { background:#222; padding:25px; border-radius:10px; text-align:center; }
+.btn-yes, .btn-no { padding:10px 20px; margin:10px; font-size:16px; border:none; cursor:pointer; border-radius:6px; }
+.btn-yes { background: var(--pink); color:#fff; } .btn-no { background:#ff4444; color:#fff; }
+
+/* HEADER / MENU */
+.header { display:flex; align-items:center; padding:15px; gap:15px; background:#1a0018; border-bottom:2px solid var(--pink); }
+.logo { width:70px; height:70px; border-radius:10px; object-fit:cover; }
+.titleBox h1 { margin:0; font-size:18px; }
+.menu { margin-left:auto; display:flex; gap:12px; align-items:center; }
+.menu a { color: var(--pink); text-decoration:none; font-weight:700; }
+
+/* CONTROLS */
+.controls { display:flex; gap:10px; padding:15px; }
+.search, select { padding:10px; flex:1; border-radius:6px; border: none; }
+
+/* GRID / CARDS */
+.grid { padding:15px; display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:15px; }
+.card { background:var(--card-bg); padding:15px; border-radius:12px; text-align:center; border:1px solid var(--pink); }
+.card img, .card video { width:100%; height:260px; object-fit:cover; border-radius:10px; cursor:pointer; }
+.tags { margin-top:10px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap; }
+.tag { background:#330025; padding:4px 10px; border-radius:6px; font-size:12px; color:#ff9ada; border:1px solid var(--pink); }
+
+.empty { text-align:center; padding:20px; display:none; color:var(--muted); }
+
+/* LIGHTBOX */
+#lightbox { position:fixed; inset:0; background: rgba(0,0,0,0.9); display:none; align-items:center; justify-content:center; z-index:100; padding:30px; }
+#lightbox .inner { max-width:100%; max-height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+#lightbox img, #lightbox video { max-width:90%; max-height:80%; border-radius:10px; }
+#lightbox .close { margin-top:12px; color:#fff; opacity:0.8; cursor:pointer; font-size:14px; }
+
+footer { text-align:center; padding:20px; color:var(--muted); }
+@media (max-width:600px){ .card img, .card video{ height:180px } }
+
+/* --- NOVO: Estilo do Botão WhatsApp --- */
+.card-actions { margin-top: 15px; }
+.btn-whatsapp {
+    display: block; /* Ocupa a largura total do card */
+    padding: 10px;
+    background: #25d366; /* Verde do WhatsApp */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s;
+    font-size: 14px;
+}
+.btn-whatsapp:hover {
+    background: #1eaa53;
+}
+/* NOVO: Esconde o botão no card de boas-vindas */
+.card[data-type*="welcome"] .btn-whatsapp {
+    display: none;
+}
+</style>
 </head>
 
 <body>
-  <!-- ======== AGE GATE ======== -->
-  <div id="ageGate">
-    <div class="panel">
-      <h2>Você tem 18 anos ou mais?</h2>
-      <button id="enterBtn" class="btn-yes">Sim</button>
-      <button id="exitBtn" class="btn-no">Não</button>
-    </div>
-  </div>
 
-  <!-- ======== APP ======== -->
-  <div class="container" id="app" aria-hidden="true">
+<div id="ageGate">
+<div class="panel">
+<h2>Você tem 18 anos ou mais?</h2>
+<button id="enterBtn" class="btn-yes">Sim</button>
+<button id="exitBtn" class="btn-no">Não</button>
+</div>
+</div>
 
-    <header class="header">
-      <img src="ts.jpeg" class="logo" alt="Logo TS Packs" />
+<div class="container" id="app" aria-hidden="true">
 
-      <div class="titleBox">
-        <h1>TS MODELS <span class="tag">(Conteúdo para maiores)</span></h1>
-        <div class="tag">Fotos de modelos, Verificadas • Divulgação</div>
-      </div>
+<header class="header">
+<img src="ts.jpeg" class="logo" alt="Logo TS Packs" />
+<div class="titleBox">
+<h1>TS MODELS <span style="font-size:12px;color:var(--pink);margin-left:6px">(Conteúdo 18+)</span></h1>
+<div class="tag" style="margin-top:6px;color:#ffd7f0;font-size:12px">Modelos verificadas • Divulgação</div>
+</div>
 
-      <nav aria-label="menu" class="menu">
-        <a href="#">Início</a>
-        <a href="#about">Sobre</a>
-        <a href="contato.html">Contato</a>
-      </nav>
-    </header>
+<nav aria-label="menu" class="menu">
+<a href="#">Início</a>
+<a href="#about">Sobre</a>
+</nav>
+</header>
 
-    <!-- ======== CONTROLES ======== -->
-    <section class="controls">
-      <input class="search" id="search" placeholder="Buscar por nome, tag ou categoria" />
-      <select id="filter" aria-label="Filtrar">
-        <option value="all">Todas</option>
-        <option value="photos">Fotos</option>
-        <option value="videos">Vídeos</option>
-      </select>
-    </section>
+<section class="controls">
+<input class="search" id="search" placeholder="Buscar por nome, tag ou categoria" />
+<select id="filter">
+<option value="all">Todas</option>
+<option value="photos">Fotos</option>
+<option value="videos">Vídeos</option>
+</select>
+</section>
 
-    <!-- ======== GALERIA ======== -->
-    <main>
-      <section class="grid" id="gallery">
+<main>
+<section class="grid" id="gallery">
 
-        <!-- CARD 1 COM LINK GERÁVEL POR WHATSAPP -->
-        <article class="card">
-          <a id="modelLink1" href="#" target="_blank">
-            <img src="ts.jpeg" class="thumb" alt="Modelo 1" />
-          </a>
+<article class="card" data-type="videos welcome">
+<video class="thumb" autoplay muted loop playsinline>
+<source src="WhatsApp Video 2025-12-03 at 22.35.21.mp4" type="video/mp4">
+</video>
+<h3 class="name">Bem-vindo (a) </h3>
+<p class="bio">Aproveite nossa seleção de modelos verificadas.</p>
+<div class="tags"><span class="tag"> Modelo </Bem-vindo!></span><span class="tag">vídeo</span></div>
+<div class="card-actions">
+<a href="#" class="btn-whatsapp">Chamar no WhatsApp</a>
+</div>
+</article>
 
-          <h3 class="name">Ana Clara</h3>
-          <p class="bio">Logo oficial TS Packs — Conteúdo adulto.</p>
+<article class="card" data-type="photos">
+<img src="deusa.jpeg" class="thumb" alt="Beatriz" />
+<h3 class="name">Beatriz</h3>
+<p class="bio">Modelo verificada — Fotos exclusivas.</p>
+<div class="tags"><span class="tag">Xcam</span><span class="tag">Conteúdos</span><span></span></div>
+<div class="card-actions">
+<a href="https://wa.me/4891998663" target="_blank" rel="noopener" class="btn-whatsapp">Chamar no WhatsApp</a>
+</div>
+</article>
 
-          <div class="tags">
-            <span class="tag">photos</span>
-            <span class="tag">logo</span>
-          </div>
-        </article>
+<article class="card" data-type="photos divulgação">
+<img src="ts.jpeg" class="thumb" alt="Camila" />
+<h3 class="name">Camila</h3>
+<p class="bio">Conteúdo exclusivo e divulgação premium.</p>
+<div class="tags"><span class="tag">photos</span><span class="tag">divulgação</span></div>
+<div class="card-actions">
+<a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="btn-whatsapp">Chamar no WhatsApp</a>
+</div>
+</article>
 
-      </section>
+</section>
 
-      <div id="empty" class="empty">Nenhuma modelo encontrada.</div>
-    </main>
+<div id="empty" class="empty">Nenhuma modelo encontrada.</div>
+</main>
 
-    <!-- ======== LIGHTBOX ======== -->
-    <div id="lightbox" role="dialog" aria-hidden="true">
-      <img id="lightboxImg" alt="Imagem ampliada" />
-      <div class="info" id="lightboxInfo"></div>
-    </div>
+<div id="lightbox" aria-hidden="true">
+<div class="inner">
+<div class="close" id="lightboxClose">Fechar (clique aqui ou pressione ESC)</div>
+</div>
+</div>
 
-    <!-- ======== FOOTER ======== -->
-    <footer>
-      <div id="about"><strong></strong></div>
-      <div style="margin-top:15px;color:var(--muted);text-align:center;">
-        © <span id="year"></span> TS PACKS MODELS
-      </div>
-    </footer>
+<footer>
+<div id="about"><strong></strong></div>
+<div class="copy">© <span id="year"></span> TS PACKS MODELS</div>
+</footer>
+</div>
 
-  </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+// AGE GATE
+const ageGate = document.getElementById("ageGate");
+const enterBtn = document.getElementById("enterBtn");
+const exitBtn = document.getElementById("exitBtn");
+const app = document.getElementById("app");
 
-  <script src="script.js"></script>
+enterBtn.addEventListener("click", () => {
+ageGate.style.display = "none";
+app.ariaHidden = "false";
+});
+
+exitBtn.addEventListener("click", () => {
+window.location.href = "https://google.com";
+});
+
+// YEAR
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// SEARCH & FILTER
+const searchInput = document.getElementById("search");
+const filterSelect = document.getElementById("filter");
+const gallery = document.getElementById("gallery");
+const empty = document.getElementById("empty");
+
+function getCards() {
+return Array.from(gallery.querySelectorAll(".card"));
+}
+
+function normalize(text) {
+return (text || "").toString().toLowerCase();
+}
+
+function filtrar() {
+const termo = normalize(searchInput.value);
+const filtro = filterSelect.value;
+const cards = getCards();
+let visiveis = 0;
+
+cards.forEach(card => {
+const textContent = normalize(card.innerText);
+const tipo = normalize(card.getAttribute("data-type") || "");
+const matchesTerm = termo === "" || textContent.includes(termo);
+const matchesFilter = filtro === "all" || tipo.includes(filtro);
+
+if (matchesTerm && matchesFilter) {
+card.style.display = "";
+visiveis++;
+} else {
+card.style.display = "none";
+}
+});
+
+empty.style.display = visiveis === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", filtrar);
+filterSelect.addEventListener("change", filtrar);
+
+// LIGHTBOX - open images or videos in the overlay
+const lightbox = document.getElementById("lightbox");
+const inner = lightbox.querySelector(".inner");
+const closeBtn = document.getElementById("lightboxClose");
+
+function openLightboxWithImage(src, alt = "") {
+cleanupInner();
+const img = document.createElement("img");
+img.src = src;
+img.alt = alt;
+img.style.borderRadius = "10px";
+inner.insertBefore(img, closeBtn);
+showLightbox();
+}
+
+function openLightboxWithVideo(src) {
+cleanupInner();
+const vid = document.createElement("video");
+vid.src = src;
+vid.controls = true;
+vid.autoplay = true;
+vid.style.borderRadius = "10px";
+inner.insertBefore(vid, closeBtn);
+showLightbox();
+}
+
+function cleanupInner() {
+Array.from(inner.children).forEach(child => {
+if (child !== closeBtn) child.remove();
+});
+}
+
+function showLightbox() {
+lightbox.style.display = "flex";
+lightbox.setAttribute("aria-hidden", "false");
+document.body.style.overflow = "hidden";
+}
+
+function hideLightbox() {
+lightbox.style.display = "none";
+lightbox.setAttribute("aria-hidden", "true");
+cleanupInner();
+document.body.style.overflow = "";
+}
+
+// open when clicking images
+document.addEventListener("click", (e) => {
+// handle image clicks inside cards (use delegation so dynamic cards also work)
+const img = e.target.closest(".card img");
+if (img) {
+e.preventDefault();
+openLightboxWithImage(img.src, img.alt || "");
+return;
+}
+// handle video clicks inside cards
+const vid = e.target.closest(".card video");
+if (vid) {
+e.preventDefault();
+const source = vid.querySelector("source");
+const src = source ? source.src : vid.currentSrc || vid.src;
+if (src) openLightboxWithVideo(src);
+return;
+}
+});
+
+// close handlers
+closeBtn.addEventListener("click", hideLightbox);
+lightbox.addEventListener("click", (e) => {
+if (e.target === lightbox) hideLightbox();
+});
+document.addEventListener("keydown", (e) => {
+if (e.key === "Escape") hideLightbox();
+});
+
+// initial filter run
+filtrar();
+});
+</script>
+
 </body>
 </html>
